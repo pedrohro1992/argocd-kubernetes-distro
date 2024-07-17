@@ -1,0 +1,31 @@
+argo-cd:
+  redis:
+    enabled: false
+  externalRedis:
+    host: "redis.homelab.infra.com"
+    password: "seguroredis"
+
+  global:
+    domain: argocd.homelab.infra.com
+    nodeSelector:
+      "argocd-node": "enabled"
+  dex:
+    enabled: false
+  notifications:
+    enabled: false
+  applicationSet:
+    enabled: false
+  server:
+    extraArgs:
+    - --insecure
+    ingress:
+      enabled: true
+      ingressClassName: nginx
+      annotations:
+        nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
+        nginx.ingress.kubernetes.io/backend-protocol: "HTTP"
+      extraTls:
+      - hosts:
+        - argocd.homelab.infra.com
+        # Based on the ingress controller used secret might be optional
+        secretName: argo-ingress-tls
