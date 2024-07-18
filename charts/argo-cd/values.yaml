@@ -20,7 +20,7 @@ argo-cd:
     - --insecure
     ingress:
       enabled: true
-      ingressClassName: nginx
+      ingressClassName: nginx-argocd
       annotations:
         nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
         nginx.ingress.kubernetes.io/backend-protocol: "HTTP"
@@ -29,3 +29,8 @@ argo-cd:
         - argocd.homelab.infra.com
         # Based on the ingress controller used secret might be optional
         secretName: argo-ingress-tls
+ingress:
+  controller:
+    ingressClassResource:
+      name: nginx-argocd
+      default: false
