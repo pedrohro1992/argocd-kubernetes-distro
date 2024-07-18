@@ -2,5 +2,8 @@ dependencies:
 - name: argo-cd
   repository: https://argoproj.github.io/argo-helm
   version: 5.46.8
-digest: sha256:9a82ac98c7a460b13f3152ba716e23924ca83468f45d5263787e95b4198be5b2
-generated: "2024-07-16T23:55:16.833131079-03:00"
+- name: ingress-nginx
+  repository: https://kubernetes.github.io/ingress-nginx
+  version: 4.11.0
+digest: sha256:145c0981cca2c5d4c22a4827a1efad805f86b08d785d3f6857a7fa5d4356c5cf
+generated: "2024-07-17T21:22:55.679113557-03:00"
