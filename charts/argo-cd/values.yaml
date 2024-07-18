@@ -29,7 +29,7 @@ argo-cd:
         - argocd.homelab.infra.com
         # Based on the ingress controller used secret might be optional
         secretName: argo-ingress-tls
-ingress:
+ingress-nginx:
   controller:
     ingressClassResource:
       name: nginx-argocd
