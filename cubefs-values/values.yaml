@@ -1,0 +1,62 @@
+component:
+  master: true
+  datanode: true
+  ingress: true
+  metanode: false
+  objectnode: false
+  client: false
+  provisioner: false
+  monitor: false
+
+# store data,log and other data, these directory will be
+#  mounted from host to container using hostPath
+path:
+  data: /var/lib/cubefs
+  log: /var/log/cubefs
+master:
+  replicas: 1
+  cluster: my-cluster
+  nodeSelector:
+    "component.cubefs.io/master": "enabled"
+  tolerations: []
+  host: master.cubefs.com
+  log_level: error
+  retain_logs: 2000
+  port: 17010
+  prof: 17020
+  exporter_port: 9500
+  metanode_reserved_mem: "67108864"
+  resources:
+    enabled: true
+    requests:
+      memory: "1Gi"
+      cpu: "1"
+    limits:
+      memory: "1Gi"
+      cpu: "1"
+
+datanode:
+  disks:
+  - /other-files:21474836480
+  resources:
+    enabled: true
+    requests:
+      memory: "1Gi"
+      cpu: "0.5"
+    limits:
+      memory: "1Gi"
+      cpu: "0.5"
+
+metanode:
+  total_mem: "1073741824"
+  resources:
+    enabled: true
+    requests:
+      memory: "2Gi"
+      cpu: "0.5"
+    limits:
+      memory: "2Gi"
+      cpu: "0.5"
+
+provisioner:
+  kubelet_path: /var/lib/kubelet
