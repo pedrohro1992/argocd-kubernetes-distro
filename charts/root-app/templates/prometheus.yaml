@@ -1,25 +1,25 @@
-# apiVersion: argoproj.io/v1alpha1
-# kind: Application
-# metadata:
-#   name: prometheus
-#   namespace: argocd
-# spec:
-#   sources:
-#   - repoURL: 'https://prometheus-community.github.io/helm-charts'
-#     chart: prometheus
-#     targetRevision: 15.7.1
-#     helm:
-#       valueFiles:
-#       - $values/charts/prometheus/values.yaml
-#   - repoURL: 'https://github.com/pedrohro1992/argocd-kubernetes-distro.git'
-#     targetRevision: main
-#     ref: values
-#   destination:
-#     server: https://kubernetes.default.svc
-#     namespace: prometheus-stack
-#   syncPolicy:
-#     automated:
-#       prune: true
-#       selfHeal: true
-#     syncOptions:
-#     - CreateNamespace=true
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: prometheus
+  namespace: argocd
+spec:
+  sources:
+  - repoURL: 'https://prometheus-community.github.io/helm-charts'
+    chart: prometheus
+    targetRevision: 15.7.1
+    helm:
+      valueFiles:
+      - $values/charts/prometheus/values.yaml
+  - repoURL: 'https://github.com/pedrohro1992/argocd-kubernetes-distro.git'
+    targetRevision: main
+    ref: values
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: prometheus-stack
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+    - CreateNamespace=true
