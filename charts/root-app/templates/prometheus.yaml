@@ -6,9 +6,9 @@ metadata:
 spec:
   project: default
   sources:
-  - repoURL: 'https://github.com/prometheus-community/helm-charts.git'
+  - repoURL: https://prometheus-community.github.io/helm-charts/
     chart: prometheus
-    targetRevision: 15.7.1
+    targetRevision: 19.7.2
     helm:
       valueFiles:
       - $values/prometheus-values/values.yaml
