@@ -1,0 +1,7 @@
+provider:
+  name: pdns
+domainFilters:
+- homelab.infra.com
+extraArgs:
+- --pdns-server=http://powerdns:8081
+- --pdns-api-key=keyname
