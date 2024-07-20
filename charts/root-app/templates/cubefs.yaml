@@ -1,0 +1,26 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: cubefs
+  namespace: argocd
+spec:
+  project: default
+  sources:
+  - repoURL: https://github.com/cubefs/cubefs-helm.git
+    path: cubefs
+    targetRevision: 3.2.0
+    helm:
+      valueFiles:
+      - $values/cubefs-values/values.yaml
+  - repoURL: 'https://github.com/pedrohro1992/argocd-kubernetes-distro.git'
+    targetRevision: main
+    ref: values
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: cubefs
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+    - CreateNamespace=true
