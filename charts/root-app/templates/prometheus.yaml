@@ -13,7 +13,7 @@ spec:
     targetRevision: 25.3.1
     helm:
       valueFiles:
-        - $values/charts/prometheus/values.yaml
+      - $values/charts/prometheus/values.yaml
   - repoURL: "https://github.com/pedrohro1992/argocd-kubernetes-distro.git"
     targetRevision: main
     ref: values
