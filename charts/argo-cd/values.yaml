@@ -2,8 +2,7 @@ argo-cd:
   redis:
     enabled: false
   externalRedis:
-    host: "redis.homelab.infra.com"
-    password: "seguroredis"
+    host: "redis-argocd.homelab.infra.com"
 
   global:
     domain: argocd.homelab.infra.com
