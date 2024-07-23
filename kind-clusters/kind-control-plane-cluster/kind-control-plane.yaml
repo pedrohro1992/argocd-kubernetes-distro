@@ -1,0 +1,49 @@
+kind: Cluster
+apiVersion: kind.x-k8s.io/v1alpha4
+name: control-plane-cluster
+nodes:
+- role: control-plane
+  extraMounts:
+  - hostPath: /run/media/pedroo/669F-9010/storage-control-plane
+    containerPath: /data0
+    readOnly: false
+    selinuxRelabel: false
+    propagation: None
+
+- role: worker
+  extraMounts:
+  - hostPath: /run/media/pedroo/sda1/cube-fs-lib
+    containerPath: /var/lib/cubefs
+    readOnly: false
+    selinuxRelabel: false
+    propagation: None
+  - hostPath: /run/media/pedroo/sda1/cube-fs-log
+    containerPath: /var/log/cubefs
+    readOnly: false
+    selinuxRelabel: false
+    propagation: None
+  labels:
+    component.cubefs.io/master: enabled
+    component.cubefs.io/csi: enabled
+
+
+- role: worker
+  extraMounts:
+  - hostPath: /run/media/pedroo/sda1/cubefs-data-node
+    containerPath: /data0
+    readOnly: false
+    selinuxRelabel: false
+    propagation: None
+  labels:
+    component.cubefs.io/datanode: enabled
+
+- role: worker
+  labels:
+    argocd-node: enabled
+
+- role: worker
+  labels:
+    component.cubefs.io/csi: enabled
+    cubefs-csi-node: enabled
+    argocd-node: enabled
+    workload: enabled

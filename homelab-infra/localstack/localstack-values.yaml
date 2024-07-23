@@ -1,0 +1,9 @@
+ingress:
+  enabled: true
+  annotations: {}
+  ingressClassName: "nginx"
+  hosts:
+  - host: aws.homelab.infra.com
+    paths:
+    - path: /
+      pathType: ImplementationSpecific

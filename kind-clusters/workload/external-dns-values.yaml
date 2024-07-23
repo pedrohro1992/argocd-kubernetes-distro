@@ -1,0 +1,8 @@
+provider:
+  name: pdns
+domainFilters:
+- homelab.com
+- homelab.infra.internal.com
+extraArgs:
+- --pdns-server=http://172.18.0.4:8081
+- --pdns-api-key=PowerDNSAPI

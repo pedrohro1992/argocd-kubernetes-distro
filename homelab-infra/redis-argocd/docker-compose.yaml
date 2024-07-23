@@ -1,0 +1,17 @@
+version: '3'
+
+services:
+  redis-argocd:
+    hostname: redis-argocd.homelab.infra.com
+    image: redis
+    command: redis-server 
+    ports:
+      - "6379"
+    networks:
+      - kind
+      - infra
+networks:
+  kind: # define the kind network
+    external: true # specifies that the network already exists in docker
+  infra:
+    external: true

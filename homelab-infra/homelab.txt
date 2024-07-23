@@ -1,0 +1,6 @@
+Homelab para experimentos com kubernetes, consiste em uma network onde rodo containers de varias ferramentas de infraestrutura, simulando um provider
+de cloud, e uma outra onde rodo um cluster kind simulando um cluster produtivo. 
+
+Comece criando uma network para simular o provider de ferramentas de infraestrutura:
+
+docker network create --subnet=172.18.0.0/16 infra
